@@ -1,0 +1,116 @@
+[
+  {
+    "name": "week_start",
+    "type": "DATE",
+    "mode": "NULLABLE",
+    "description": "Start of the week for aggregation"
+  },
+  {
+    "name": "month_start",
+    "type": "DATE",
+    "mode": "NULLABLE",
+    "description": "Start of the month for aggregation"
+  },
+  {
+    "name": "advertising_channel_type",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Type of advertising channel"
+  },
+  {
+    "name": "advertising_channel_sub_type",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Subtype of advertising channel"
+  },
+  {
+    "name": "bidding_strategy_type",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Type of bidding strategy"
+  },
+  {
+    "name": "status",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Campaign status"
+  },
+  {
+    "name": "campaign_count",
+    "type": "INT64",
+    "mode": "NULLABLE",
+    "description": "Number of campaigns in this group"
+  },
+  {
+    "name": "total_budget",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Total budget across all campaigns"
+  },
+  {
+    "name": "total_spend",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Total spend across all campaigns"
+  },
+  {
+    "name": "total_impressions",
+    "type": "INT64",
+    "mode": "NULLABLE",
+    "description": "Total impressions across all campaigns"
+  },
+  {
+    "name": "total_clicks",
+    "type": "INT64",
+    "mode": "NULLABLE",
+    "description": "Total clicks across all campaigns"
+  },
+  {
+    "name": "total_conversions",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Total conversions across all campaigns"
+  },
+  {
+    "name": "total_conversion_value",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Total conversion value across all campaigns"
+  },
+  {
+    "name": "avg_cpm",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Average cost per thousand impressions"
+  },
+  {
+    "name": "avg_cpc",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Average cost per click"
+  },
+  {
+    "name": "avg_ctr",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Average click-through rate"
+  },
+  {
+    "name": "avg_cvr",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Average conversion rate"
+  },
+  {
+    "name": "avg_roas",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Average return on ad spend"
+  },
+  {
+    "name": "last_updated",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE",
+    "description": "Timestamp of last data update"
+  }
+] 

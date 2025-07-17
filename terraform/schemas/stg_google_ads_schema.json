@@ -1,0 +1,122 @@
+[
+  {
+    "name": "campaign_id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Unique identifier for the campaign"
+  },
+  {
+    "name": "campaign_name",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Name of the campaign"
+  },
+  {
+    "name": "status",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Campaign status (ENABLED, PAUSED, etc.)"
+  },
+  {
+    "name": "start_date",
+    "type": "DATE",
+    "mode": "NULLABLE",
+    "description": "Campaign start date"
+  },
+  {
+    "name": "end_date",
+    "type": "DATE",
+    "mode": "NULLABLE",
+    "description": "Campaign end date"
+  },
+  {
+    "name": "advertising_channel_type",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Type of advertising channel"
+  },
+  {
+    "name": "advertising_channel_sub_type",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Subtype of advertising channel"
+  },
+  {
+    "name": "bidding_strategy_type",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Type of bidding strategy"
+  },
+  {
+    "name": "budget_amount",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Budget amount in currency units"
+  },
+  {
+    "name": "cost",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Cost in currency units"
+  },
+  {
+    "name": "impressions",
+    "type": "INT64",
+    "mode": "NULLABLE",
+    "description": "Number of impressions"
+  },
+  {
+    "name": "clicks",
+    "type": "INT64",
+    "mode": "NULLABLE",
+    "description": "Number of clicks"
+  },
+  {
+    "name": "conversions",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Number of conversions"
+  },
+  {
+    "name": "conversions_value",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Value of conversions"
+  },
+  {
+    "name": "ctr",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Click-through rate"
+  },
+  {
+    "name": "cpc",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Cost per click"
+  },
+  {
+    "name": "cpm",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Cost per thousand impressions"
+  },
+  {
+    "name": "roas",
+    "type": "FLOAT64",
+    "mode": "NULLABLE",
+    "description": "Return on ad spend"
+  },
+  {
+    "name": "ingestion_timestamp",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE",
+    "description": "Timestamp when data was ingested"
+  },
+  {
+    "name": "_loaded_at",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE",
+    "description": "Timestamp when data was loaded into BigQuery"
+  }
+] 

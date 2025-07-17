@@ -1,0 +1,42 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw data from various advertising platforms"
+    tables:
+      - name: google_ads_campaigns
+        description: "Raw Google Ads campaign data ingested from API"
+        columns:
+          - name: campaign_id
+            description: "Unique identifier for the campaign"
+            tests:
+              - not_null
+              - unique
+          - name: campaign_name
+            description: "Name of the campaign"
+          - name: status
+            description: "Campaign status (ENABLED, PAUSED, etc.)"
+          - name: start_date
+            description: "Campaign start date"
+          - name: end_date
+            description: "Campaign end date"
+          - name: advertising_channel_type
+            description: "Type of advertising channel"
+          - name: advertising_channel_sub_type
+            description: "Subtype of advertising channel"
+          - name: bidding_strategy_type
+            description: "Type of bidding strategy"
+          - name: budget_amount_micros
+            description: "Budget amount in micros (divide by 1,000,000 for actual amount)"
+          - name: impressions
+            description: "Number of impressions"
+          - name: clicks
+            description: "Number of clicks"
+          - name: cost_micros
+            description: "Cost in micros (divide by 1,000,000 for actual amount)"
+          - name: conversions
+            description: "Number of conversions"
+          - name: conversions_value
+            description: "Value of conversions"
+          - name: ingestion_timestamp
+            description: "Timestamp when data was ingested" 
