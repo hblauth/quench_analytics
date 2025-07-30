@@ -89,11 +89,11 @@ End: All stages (auth, fetch, write) log to stdout
 
 ✅ Test: Logs visible in Cloud Logging console
 
-⏳ 5.2 – Add Alert on Function Failure
+✅ 5.2 – Add Alert on Function Failure
 Start: Logging in place
 End: Alert email if function errors out
 
-⏳ Test: Trigger error manually, receive alert
+✅ Test: Trigger error manually, receive alert
 
 ✅ 5.3 – Document API Schema & Storage Location
 Start: One API integrated
@@ -114,12 +114,13 @@ End: docs/architecture.md describes Google Ads endpoint and file schema
 
 ## Current Status Summary
 
-### ✅ Completed (Phases 1-4)
+### ✅ Completed (Phases 1-5)
 - **Infrastructure**: All GCP resources deployed via Terraform
 - **Google Ads Integration**: Cloud Function with real API integration
 - **Data Pipeline**: dbt models for staging and analytics
 - **Scheduling**: Automated weekly ingestion
 - **Dashboard MVP**: Complete Looker Studio setup and configuration
+- **Monitoring & Alerting**: Comprehensive error detection and notification system
 - **Documentation**: Comprehensive architecture and setup guides
 
 ### 🎯 Phase 4 Dashboard MVP Components Completed
@@ -148,7 +149,6 @@ End: docs/architecture.md describes Google Ads endpoint and file schema
 - **Interactive Filters**: Date range, channel type, campaign status
 
 ### 🔄 In Progress
-- **Alerting**: Setting up monitoring and alerting for function failures
 - **Advanced Analytics**: Cross-platform attribution and advanced metrics
 
 ### ⏳ Next Steps (Phase 5+)

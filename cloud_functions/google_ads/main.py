@@ -17,10 +17,12 @@ def main(request):
     Cloud Function entry point for Google Ads data ingestion.
     Expects HTTP POST or GET request.
     """
+    start_time = datetime.now(timezone.utc)
+    logger.info("Starting Google Ads data ingestion")
+    
     try:
-        logger.info("Starting Google Ads data ingestion")
-        
         # Fetch secrets from Secret Manager
+        logger.info("Fetching secrets from Secret Manager")
         developer_token = get_secret(config.SECRET_NAMES["developer_token"], config.PROJECT_ID)
         client_id = get_secret(config.SECRET_NAMES["client_id"], config.PROJECT_ID)
         client_secret = get_secret(config.SECRET_NAMES["client_secret"], config.PROJECT_ID)
@@ -30,6 +32,7 @@ def main(request):
         logger.info("Successfully retrieved secrets from Secret Manager")
 
         # Initialize Google Ads client
+        logger.info("Initializing Google Ads client")
         client = GoogleAdsClient.load_from_dict({
             "developer_token": developer_token,
             "client_id": client_id,
@@ -42,11 +45,16 @@ def main(request):
         logger.info("Google Ads client initialized successfully")
 
         # Fetch campaign data from Google Ads API
+        logger.info("Fetching campaign data from Google Ads API")
         campaigns = fetch_campaign_data(client, login_customer_id)
         
-        logger.info(f"Retrieved {len(campaigns)} campaigns from Google Ads API")
+        if len(campaigns) == 0:
+            logger.warning("Retrieved 0 campaigns from Google Ads API - this may indicate an issue")
+        else:
+            logger.info(f"Retrieved {len(campaigns)} campaigns from Google Ads API")
 
         # Save to GCS
+        logger.info("Saving data to Google Cloud Storage")
         date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
         destination_blob = f"{config.DATA_SOURCES['google_ads']['gcs_path']}/{date_str}/google_ads_response.json"
         
@@ -55,16 +63,25 @@ def main(request):
         blob = bucket.blob(destination_blob)
         blob.upload_from_string(json.dumps(campaigns, indent=2), content_type="application/json")
         
-        logger.info(f"Successfully uploaded data to gs://{config.RAW_DATA_BUCKET}/{destination_blob}")
+        execution_time = (datetime.now(timezone.utc) - start_time).total_seconds()
+        logger.info(f"Successfully uploaded data to gs://{config.RAW_DATA_BUCKET}/{destination_blob} in {execution_time:.2f} seconds")
 
         return (f"Uploaded to gs://{config.RAW_DATA_BUCKET}/{destination_blob}", 200)
         
     except GoogleAdsException as ex:
-        logger.error(f"Google Ads API error: {ex}")
-        return (f"Google Ads API error: {ex}", 500)
+        execution_time = (datetime.now(timezone.utc) - start_time).total_seconds()
+        error_msg = f"Google Ads API error after {execution_time:.2f}s: {ex}"
+        logger.error(error_msg)
+        logger.error(f"Request ID: {getattr(ex, 'request_id', 'N/A')}")
+        logger.error(f"Error code: {getattr(ex, 'error', {}).get('code', 'N/A')}")
+        return (error_msg, 500)
+        
     except Exception as e:
-        logger.error(f"Unexpected error: {e}")
-        return (f"Unexpected error: {e}", 500)
+        execution_time = (datetime.now(timezone.utc) - start_time).total_seconds()
+        error_msg = f"Unexpected error after {execution_time:.2f}s: {str(e)}"
+        logger.error(error_msg)
+        logger.error(f"Error type: {type(e).__name__}")
+        return (error_msg, 500)
 
 def fetch_campaign_data(client, customer_id):
     """
